@@ -1,8 +1,17 @@
+using JovemProgramadorMVC.Data.Mapeamento.Repositório.Interface;
+using JovemProgramadorMVC.Data;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+var configuration = builder.Configuration;
+builder.Services.AddDbContext<JovemProgramadorContexto>();
+builder.Services.AddDbContext<JovemProgramadorContexto>(opt => opt.UseSqlServer(configuration.GetConnectionString("StringConexao")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

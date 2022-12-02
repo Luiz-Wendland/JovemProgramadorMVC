@@ -10,7 +10,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Idade</th>
                 <th scope="col">Contato</th>
@@ -20,15 +19,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Luiz Wendland</td>
-                <td>17 anos</td>
-                <td>(48) 94821-4123</td>
-                <td>luiz@gmail.com</td>
-                <td>88240-000</td>
-                <td><button type="button" class="btn btn-primary">Endereço</button></td>
-            </tr>
+
+            @if(Model != null && Model.Any())
+            {
+                foreach (AlunoModel aluno in Model){
+                    <tr>
+                        <td>@aluno.Nome</td>
+                        <td>@aluno.Idade</td>
+                        <td>@aluno.Contato</td>
+                        <td>@aluno.Email</td>
+                        <td>@aluno.Cep</td>
+                        <td><button type="button" class="btn btn-primary">Endereço</button></td>
+                        <td><button type="button" class="btn btn-danger">Excluir</button></td>
+                        <td><a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a></td>
+                    </tr>
+                }
+            }
             <tr>
                 <th scope="row">2</th>
                 <td>João Vitor</td>
@@ -37,6 +43,8 @@
                 <td>joao@gmail.com</td>
                 <td>88240-000</td>
                 <td><button type="button" class="btn btn-primary">Endereço</button></td>
+                <td><button type="button" class="btn btn-secondary">Editar</button></td>
+                <td><button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
             <tr>
                 <th scope="row">3</th>
@@ -46,6 +54,8 @@
                 <td>ana@gmail.com</td>
                 <td>88240-000</td>
                 <td><button type="button" class="btn btn-primary">Endereço</button></td>
+                <td><button type="button" class="btn btn-secondary">Editar</button></td>
+                <td><button type="button" class="btn btn-danger">Excluir</button></td>
             </tr>
         </tbody>
     </table>

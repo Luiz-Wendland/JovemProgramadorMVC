@@ -2,15 +2,15 @@
     ViewData["Title"] = "Editar";
 }
 
-@model AlunoModel
+@model ProfessorModel
 
-<form asp-controller="Alunos" asp-action="Atualizar" method="post">
+<form asp-controller="Professores" asp-action="Atualizar" method="post">
 
     <input type="hidden" asp-for="Id" />
 
     <div class="text-sm-left">
         <h1>
-            Editando dados do aluno
+            Editando dados do professor
         </h1>
         <hr class="border border-info border-3 opacity-100">
     </div>
@@ -43,6 +43,6 @@
     </div>
     <div class="text-center">
         <button class="btn btn-primary" type="submit">Salvar</button>
-        <a style="margin:10px" class="btn btn-secondary" asp-controller="Alunos" asp-action="Index">Voltar</a>
+        <a style="margin:10px" class="btn btn-secondary" asp-controller="Professores" asp-action="Index">Voltar</a>
     </div>
 </form> 

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Alunos";
+    ViewData["Title"] = "Professores";
 }
 
 @if (TempData["MensagemSucesso"] != null)
@@ -37,11 +37,11 @@ else if (TempData["MensagemErro"] != null)
 
 }
 
-@model List<AlunoModel>
+@model List<ProfessorModel>
 
 <div class="text-left">
     <div>
-        <h1>Dados do aluno</h1>
+        <h1>Dados dos professores</h1>
     </div>
 
     <table class="table">
@@ -57,28 +57,29 @@ else if (TempData["MensagemErro"] != null)
         </thead>
         <tbody>
 
-            @if(Model != null && Model.Any())
+            @if (Model != null && Model.Any())
             {
-                foreach (AlunoModel aluno in Model){
+                foreach (ProfessorModel professor in Model)
+                {
                     <tr>
-                        <td>@aluno.Nome</td>
-                        <td>@aluno.Idade</td>
-                        <td>@aluno.Contato</td>
-                        <td>@aluno.Email</td>
-                        <td>@aluno.Cep</td>
+                        <td>@professor.Nome</td>
+                        <td>@professor.Idade</td>
+                        <td>@professor.Contato</td>
+                        <td>@professor.Email</td>
+                        <td>@professor.Cep</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                <a class="btn btn-secondary" type="submit" asp-controller="Alunos" asp-action="BuscarEndereco" asp-route-cep="@aluno.Cep">Endereço</a>
+                                <a class="btn btn-secondary" type="submit" asp-controller="Professores" asp-action="BuscarEndereco" asp-route-cep="@professor.Cep">Endereço</a>
                             </div>
                         </td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                <a class="btn btn-primary" type="submit" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a>
+                                <a class="btn btn-primary" type="submit" asp-controller="Professores" asp-action="Editar" asp-route-id="@professor.Id">Editar</a>
                             </div>
                         </td>
                         <td>
                             <div class="d-grid gap-2 d-md-block">
-                                <a class="btn btn-danger" type="button" asp-controller="Alunos" asp-action="RemoverAluno" asp-route-id="@aluno.Id">Excluir</a>
+                                <a class="btn btn-danger" type="button" asp-controller="Professores" asp-action="RemoverProfessor" asp-route-id="@professor.Id">Excluir</a>
                             </div>
                         </td>
                     </tr>
@@ -88,7 +89,7 @@ else if (TempData["MensagemErro"] != null)
     </table>
 
     <div class="d-flex justify-content-center">
-        <a asp-controller="Alunos" asp-action="Adicionar" class="btn btn-primary">Adicionar novo aluno</a>
+        <a asp-controller="Professores" asp-action="Adicionar" class="btn btn-primary">Adicionar novo professor</a>
     </div>
 
 </div>

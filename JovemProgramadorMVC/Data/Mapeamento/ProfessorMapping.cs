@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace JovemProgramadorMVC.Data.Mapeamento
 {
-    public class ProfessorMapping : IEntityTypeConfiguration<ProfessorModel>
+    public class AlunoMapping : IEntityTypeConfiguration<AlunoModel>
     {
-        public void Configure(EntityTypeBuilder<ProfessorModel> builder)
+        public void Configure(EntityTypeBuilder<AlunoModel> builder)
         {
-            builder.ToTable("Professor");
+            builder.ToTable("Aluno");
 
             builder.HasKey(t => t.Id);
 

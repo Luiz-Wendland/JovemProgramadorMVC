@@ -21,6 +21,7 @@ builder.Services.AddDbContext<JovemProgramadorContexto>(options =>
 //builder.Services.AddDbContext<JovemProgramadorContexto>();
 //builder.Services.AddDbContext<JovemProgramadorContexto>(opt => opt.UseSqlServer(configuration.GetConnectionString("StringConexao")));
 builder.Services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
+builder.Services.AddScoped<IProfessorRepositorio, ProfessorRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

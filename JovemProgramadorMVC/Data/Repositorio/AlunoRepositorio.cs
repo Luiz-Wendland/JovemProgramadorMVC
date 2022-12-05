@@ -4,42 +4,42 @@ using JovemProgramadorMVC.Models;
 
 namespace JovemProgramadorMVC.Data.Repositorio
 {
-    public class AlunoRepositorio : IAlunoRepositorio
+    public class ProfessorRepositorio : IProfessorRepositorio
     {
         private readonly JovemProgramadorContexto _jovemProgramadorContexto;
 
-        public AlunoRepositorio(JovemProgramadorContexto jovemProgramadorContexto)
+        public ProfessorRepositorio(JovemProgramadorContexto jovemProgramadorContexto)
         {
             _jovemProgramadorContexto = jovemProgramadorContexto;
         }
 
-        public void InserirAluno(AlunoModel aluno)
+        public void InserirProfessor(ProfessorModel professor)
         {
-            _jovemProgramadorContexto.Aluno.Add(aluno);
+            _jovemProgramadorContexto.Professor.Add(professor);
             _jovemProgramadorContexto.SaveChanges();
         }
 
-        public List<AlunoModel> BuscarAlunos()
+        public List<ProfessorModel> BuscarProfessores()
         {
-            return _jovemProgramadorContexto.Aluno.ToList();
+            return _jovemProgramadorContexto.Professor.ToList();
         }
 
-        public AlunoModel BuscarId(int id)
+        public ProfessorModel BuscarId(int id)
         {
-            return _jovemProgramadorContexto.Aluno.FirstOrDefault(x => x.Id == id);
+            return _jovemProgramadorContexto.Professor.FirstOrDefault(x => x.Id == id);
         }
 
-        public void Atualizar(AlunoModel aluno)
+        public void Atualizar(ProfessorModel professor)
         {
 
-            _jovemProgramadorContexto.Aluno.Update(aluno);
+            _jovemProgramadorContexto.Professor.Update(professor);
             _jovemProgramadorContexto.SaveChanges();
 
         }
 
-        public void ExcluirAluno(AlunoModel aluno)
+        public void ExcluirProfessor(ProfessorModel professor)
         {
-            _jovemProgramadorContexto.Aluno.Remove(aluno);
+            _jovemProgramadorContexto.Professor.Remove(professor);
             _jovemProgramadorContexto.SaveChanges();
         }
 

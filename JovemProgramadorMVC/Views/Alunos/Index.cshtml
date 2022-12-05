@@ -2,6 +2,43 @@
     ViewData["Title"] = "Alunos";
 }
 
+@if (TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success col-10">
+        @TempData["MensagemSucesso"]
+    </div>
+    TempData["EditarSucesso"] = null;
+
+}
+
+else if (TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-danger col-10">
+        @TempData["MensagemErro"]
+    </div>
+    TempData["EditarSucesso"] = null;
+}
+
+
+@if (TempData["EditarSucesso"] != null)
+{
+    <div class="alert-success">
+        @TempData["EditarSucesso"]
+    </div>
+    TempData["EditarSucesso"] = null;
+}
+
+@if (TempData["EditarErro"] != null)
+{
+    <div class="alert-danger">
+        @TempData["EditarErro"]
+    </div>
+    TempData["EditarSucesso"] = null;
+
+}
+
+@model List<AlunoModel>
+
 <div class="text-left">
     <div>
         <h1>Dados do aluno</h1>
@@ -29,34 +66,24 @@
                         <td>@aluno.Contato</td>
                         <td>@aluno.Email</td>
                         <td>@aluno.Cep</td>
-                        <td><button type="button" class="btn btn-primary">Endereço</button></td>
-                        <td><button type="button" class="btn btn-danger">Excluir</button></td>
-                        <td><a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a></td>
+                        <td>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                <a style="margin:5px" class="btn btn-secondary" type="submit" asp-controller="Alunos" asp-action="BuscarEndereco" asp-route-cep="@aluno.Cep">Endereço</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                <a style="margin:5px" class="btn btn-primary" type="submit" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a style="margin:5px" class="btn btn-danger" type="button" asp-controller="Alunos" asp-action="RemoverAluno" asp-route-id="@aluno.Id">Excluir</a>
+                            </div>
+                        </td>
                     </tr>
                 }
             }
-            <tr>
-                <th scope="row">2</th>
-                <td>João Vitor</td>
-                <td>21 anos</td>
-                <td>(48) 91284-4214</td>
-                <td>joao@gmail.com</td>
-                <td>88240-000</td>
-                <td><button type="button" class="btn btn-primary">Endereço</button></td>
-                <td><button type="button" class="btn btn-secondary">Editar</button></td>
-                <td><button type="button" class="btn btn-danger">Excluir</button></td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Ana Karoline </td>
-                <td>22 anos</td>
-                <td>(48) 98412-8412</td>
-                <td>ana@gmail.com</td>
-                <td>88240-000</td>
-                <td><button type="button" class="btn btn-primary">Endereço</button></td>
-                <td><button type="button" class="btn btn-secondary">Editar</button></td>
-                <td><button type="button" class="btn btn-danger">Excluir</button></td>
-            </tr>
         </tbody>
     </table>
 

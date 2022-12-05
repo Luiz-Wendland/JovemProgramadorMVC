@@ -15,6 +15,7 @@ namespace JovemProgramadorMVC.Data
         {
             modelBuilder.ApplyConfiguration(new AlunoMapping());
         }
+
         public DbSet<AlunoModel> Aluno { get; set; }
     }
 }

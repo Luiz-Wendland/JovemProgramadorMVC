@@ -1,0 +1,25 @@
+﻿@model EnderecoModel
+
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Logradouro: @Html.DisplayFor(endereco => endereco.Logradouro)</p>
+                <p>Bairro: @Html.DisplayFor(endereco => endereco.Bairro)</p>
+                <p>UF: @Html.DisplayFor(endereco => endereco.Uf)</p>
+                <p>DDD: @Html.DisplayFor(endereco => endereco.Ddd)</p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-primary" type="button" asp-controller="Alunos" asp-action="Index">Fechar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>$(document).ready(function () {
+            $('#myModal').modal('show');
+        });</script>
+}

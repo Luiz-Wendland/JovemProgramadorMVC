@@ -1,8 +1,10 @@
-﻿using JovemProgramadorMVC.Models;
+﻿using JovemProgramadorMVC.Data.Repositorio.Interface;
+using JovemProgramadorMVC.Models;
 
-namespace JovemProgramadorMVC.Data.Mapeamento.Repositório.Interface
+
+namespace JovemProgramadorMVC.Data.Repositorio
 {
-    public class AlunoRepositorio: IAlunoRepositorio
+    public class AlunoRepositorio : IAlunoRepositorio
     {
         private readonly JovemProgramadorContexto _jovemProgramadorContexto;
 
@@ -10,12 +12,13 @@ namespace JovemProgramadorMVC.Data.Mapeamento.Repositório.Interface
         {
             _jovemProgramadorContexto = jovemProgramadorContexto;
         }
-        public void InserirAluno(AlunoModel alunos)
+
+        public void InserirAluno(AlunoModel aluno)
         {
-            _jovemProgramadorContexto.Aluno.Add(alunos);
+            _jovemProgramadorContexto.Aluno.Add(aluno);
             _jovemProgramadorContexto.SaveChanges();
         }
-        
+
         public List<AlunoModel> BuscarAlunos()
         {
             return _jovemProgramadorContexto.Aluno.ToList();
@@ -23,19 +26,22 @@ namespace JovemProgramadorMVC.Data.Mapeamento.Repositório.Interface
 
         public AlunoModel BuscarId(int id)
         {
-            return _jovemProgramadorContexto.Aluno.FirstOrDefault(X => X.Id ==id);
+            return _jovemProgramadorContexto.Aluno.FirstOrDefault(x => x.Id == id);
         }
 
-        public void EditarAluno(AlunoModel alunos)
+        public void Atualizar(AlunoModel aluno)
         {
-            _jovemProgramadorContexto.Aluno.Update(alunos);
+
+            _jovemProgramadorContexto.Aluno.Update(aluno);
+            _jovemProgramadorContexto.SaveChanges();
+
+        }
+
+        public void ExcluirAluno(AlunoModel aluno)
+        {
+            _jovemProgramadorContexto.Aluno.Remove(aluno);
             _jovemProgramadorContexto.SaveChanges();
         }
 
-        public void ExcluirAluno(AlunoModel alunos)
-        {
-            _jovemProgramadorContexto.Aluno.Remove(alunos);
-            _jovemProgramadorContexto.SaveChanges();
-        }
     }
 }
